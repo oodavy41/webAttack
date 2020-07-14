@@ -5,6 +5,7 @@ export default class particle {
     constructor(scene, material, launcher) {
         this.sprite = new THREE.Sprite(material);
         this.anime = null;
+        this.removeAnime = null;
         this.alive = false;
         this.launcher = launcher;
         this.scene = scene;
@@ -17,7 +18,10 @@ export default class particle {
 
     unmount() {
         this.anime.pause();
+        this.removeAnime();
         delete this.anime;
+        this.sprite.material.dispose();
+        delete this.sprite
     }
     aweak(parent, opt) {
         // console.log("aweak", opt);
@@ -28,10 +32,10 @@ export default class particle {
         this.sprite.position.copy(parent.position);
         this.sprite.visible = true;
         this.sprite.layers = parent.layers;
-        let t = { start: opt.start * 100 };
         if (this.anime) {
             this.anime.restart();
         } else {
+            let t = { start: opt.start * 100 };
             this.anime = anime({
                 targets: t,
                 start: opt.end * 100,
@@ -48,6 +52,7 @@ export default class particle {
                     this.sprite.visible = false;
                 },
             });
+            this.removeAnime = () => anime.remove(t);
         }
         return this;
     }

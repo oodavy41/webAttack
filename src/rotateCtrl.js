@@ -47,7 +47,7 @@ function rotateCtrl() {
       } else {
         focusTime += deltaT;
         let { boat, anime } = focusing;
-        console.log(anime, anime.progress);
+        // console.log(anime, anime.progress);
         if (focusTime > minFocusTime && anime.progress == 100) {
           focusing = null;
           focusTime = 0;
@@ -68,4 +68,4 @@ function rotateCtrl() {
     },
   };
 }
-export default rotateCtrl();
+export default rotateCtrl;

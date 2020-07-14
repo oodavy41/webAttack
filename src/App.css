@@ -8,7 +8,6 @@
     position: fixed;
     top: 8vh;
     width: 100vw;
-
     text-align: center;
     color: white;
 }
@@ -70,7 +69,8 @@
 .table td {
     /* padding: 025px; */
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding:0 40px;
 }
 .table :hover td{
     color: #fff;

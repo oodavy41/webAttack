@@ -41,6 +41,10 @@ export default class particleLauncher extends THREE.Object3D {
             p.unmount();
         });
         delete this.popQueue;
+        delete this.texture;
+        delete this.alphaMap;
+        delete this.parent;
+        delete this.scene;
     }
 
     fire() {
