@@ -1,0 +1,101 @@
+.head {
+    position: fixed;
+    width: 100vw;
+    text-align: center;
+    color: white;
+}
+.timer {
+    position: fixed;
+    top: 8vh;
+    width: 100vw;
+
+    text-align: center;
+    color: white;
+}
+
+.panel {
+    position: absolute;
+    width: 30vw;
+    min-width: 600px;
+    top: 30vh;
+    right: 10vh;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+/*定义滚动条高宽及背景
+ 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+    width:6px;
+    height:0px;
+}
+::-webkit-scrollbar-track
+{
+    border-radius:4px;
+}
+::-webkit-scrollbar-thumb
+{
+    border-radius:4px;
+    background-color:rgba(128, 156, 218,0.5);
+}
+
+.cell {
+    padding: 10px 20px;
+    margin: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 60px;
+    border-radius: 5px;
+    /* border: 1px solid white; */
+    color: rgb(147, 181, 255);
+    display: flex;
+    justify-content: space-between;
+}
+.subCell{
+    line-height: 40px;
+}
+
+.defSuccess {
+    color: #000;
+    background-color: rgba(107, 154, 255, 0.74);
+}
+.table {
+    width: -webkit-fill-available;
+    /* margin-left:10px; */
+}
+
+.table td {
+    /* padding: 025px; */
+    display: flex;
+    justify-content: space-around;
+}
+.table :hover td{
+    color: #fff;
+    background-color: rgba(147, 181, 255, 0.6) !important;
+}
+.table :nth-child(even) td {
+    background-color: rgba(147, 181, 255, 0.2);
+}
+.attack_type {
+    float: left;
+}
+.attack_aim {
+    float: right;
+}
+.title {
+    width: fit-content;
+    font-size: 32px;
+}
+.subTitle {
+    width: fit-content;
+    font-size: 24px;
+}
+.count{
+    font-size: 30px;
+}
+.value {
+    font-size: 24px;
+}

@@ -1,0 +1,20 @@
+.panel {
+  position: absolute;
+  top: 51vh;
+  left: 20vw;
+  padding: 5px 20px;
+  color: #fff;
+  font-size: 25px;
+  line-height: 30px;
+  border-radius: 5px;
+  background-color: rgba(255, 136, 136,0.3);
+}
+.path {
+    color:#f88
+}
+.type {
+    font-size: 20px;
+}
+.time {
+    font-size: 18px;
+}
