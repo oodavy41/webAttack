@@ -28,8 +28,9 @@ import steamIcon from "./img/steam.png";
 import haloIcon from "./img/spot.png";
 import space1Map from "./img/space1.jpg";
 // import Compoment
-
-const backgroundColor = "rgba(0,0,0,0)";
+const customPath = "custom/three_webAttack";
+const defaultData = ["0.5"];
+const backgroundColor = "#000";
 const haloSize = 120;
 const sunLightStrength = 12;
 const ambientLightColor = "#606060";
@@ -121,6 +122,7 @@ export default class App extends Component {
     }
 
     componentDidMount() {
+        let dataProvider = this.props.dataProvider || defaultData;
         this.rotation = rotateCtrl();
         this.zoom = zoomCtrl(globeScale);
         this.trialGen = trialGen(globeSize, 1.1);
@@ -137,7 +139,9 @@ export default class App extends Component {
         // worldTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
         let worldNightTex = new THREE.TextureLoader().load(globeNightMap);
         let worldNormal = new THREE.TextureLoader().load(globeNightNormalMap);
-        let spaceTex = new THREE.TextureLoader().load(space1Map);
+        let spaceTex = new THREE.TextureLoader().load(
+            dataProvider[1] ? customPath + dataProvider[1] : space1Map
+        );
         let spriteTex = new THREE.TextureLoader().load(steamIcon);
         this.pathGen.setTex(spriteTex);
         let haloMap = new THREE.TextureLoader().load(haloIcon);
@@ -167,8 +171,8 @@ export default class App extends Component {
             premultipliedAlpha: true,
         });
         renderer.toneMapping = THREE.ReinhardToneMapping;
-        renderer.setClearColor(backgroundColor);
-        renderer.setClearAlpha(0);
+        // renderer.setClearColor(backgroundColor);
+        // renderer.setClearAlpha(0.0);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(this.div.clientWidth, this.div.clientHeight);
         this.div.appendChild(renderer.domElement);
@@ -282,7 +286,7 @@ export default class App extends Component {
                 color: "#fff",
                 map: spaceTex,
                 // transparent: true,
-                opacity: 0.5,
+                opacity: +dataProvider[0],
                 depthWrite: false,
             })
         );
@@ -387,7 +391,6 @@ export default class App extends Component {
             <div
                 ref={(m) => (this.div = m)}
                 style={{
-                    backgroundImage: `url(${space1Map})`,
                     width: "100%",
                     height: "100%",
                 }}
